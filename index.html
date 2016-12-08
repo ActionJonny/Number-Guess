@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700" rel="stylesheet">
+    <link rel="stylesheet" media="(min-width-width: 650px)" href="css/styles.css" />
     <title>Number Guesser</title>
   </head>
   <body>
@@ -11,16 +13,22 @@
       <span>Number</span>
       <span class='guesserTitle'>Guesser</span>
     </header>
-    <input class='user-guess' placeholder="Enter your guess"></input>
-    <br>
-    <button type="button" name="guess" class='guess' disabled>Guess</button>
-    <button type="button" name="clear" class='clear'>Clear</button>
-    <section>
+    <section class='top-container'>
+      <input class='user-guess' placeholder="Enter your guess"></input>
+      <button type="button" name="guess" class='guess' disabled>Guess</button>
+      <button type="button" name="clear" class='clear' disabled>Clear</button>
+    </section>
+    <section class='middle-container'>
       <h1 class="last-guess"></h1>
       <h2 class="user-input"></h2>
       <h3 class="too"></h3>
     </section>
-    <button type="button" name="reset" class='reset' disabled>Reset</button>
+    <section class='bottom-container'>
+      <h4></h4>
+      <h5></h5>
+      <button class="set">Set</button>
+      <button type="button" name="reset" class='reset' disabled>Reset</button>
+    </section>
     <script src="script.js"></script>
   </body>
 </html>

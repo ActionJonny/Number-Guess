@@ -1,47 +1,154 @@
 body {
+  position: relative;
   text-align: center;
+  font-family: 'Open Sans', sans-serif;
 }
 header {
+  position: relative;
   background-color: #404041;
-  height: 35px;
+  height: 50px;
   text-align: center;
   padding-top: 15px;
   color: #ED458B;
+  font-weight: 700;
+  font-size: 35px;
 }
 
 .guesserTitle {
   color: #E6E7E8;
+  font-weight: 300;
+}
+
+.top-container{
+  position: relative;
+  height: 200px;
+  align-content: center;
 }
 
 .user-guess {
-  margin: 50px 0;
+  position: absolute;
+  border: 2px solid #D0D2D3;
+  top: 20px;
+  left: 15px;
   height: 50px;
   width: 90%;
+  font-size: 25px;
+  color: #929497;
+}
+
+.user-guess:focus {
+  outline: none;
+}
+
+.user-guess::-webkit-input-placeholder {
+  font-size: 25px;
+}
+
+.guess {
+  position: absolute;
+  top: 85px;
+  left: 17.5px;
+}
+
+.clear {
+  position: absolute;
+  top: 140px;
+  left: 17.5px;
 }
 
 button {
   background-color: #929497;
   color: #fff;
   border-style: none;
-  padding: 10px;
+  border-radius: 20px;
   width: 90%;
-  margin: 20px 20px;
+  height: 45px;
+}
+
+button:hover {
+  background-color: #EB008B;
+
+}
+button:disabled{
+  background-color: #D0D2D3;
 }
 
 button:focus {
   outline: 0;
 }
 
-.guess .clear {
-  display: inline-block;
-  margin-top: 200px;
+.middle-container {
+  top: 150px;
+  height: 200px;
 }
 
-section {
+.user-input {
+  color: #EB008B;
+  font-size: 120px;
+}
+
+
+
+.bottom-container {
+  position: relative;
   height: 250px;
-  width: 90%;
 }
 
-.div.content {
-  text-align: center;
+h4 {
+  position: absolute;
+}
+
+.set {
+  position: absolute;
+  bottom: 55px;
+  left: 17.5px;
+}
+
+.reset {
+  position: absolute;
+  left: 17.5px;
+  bottom: 0;
+}
+@media screen and (min-width: 650px) {
+  .user-guess {
+    position: absolute;
+    left: 25%;
+    top: 20px;
+    height: 50px;
+    width: 50%;
+    font-size: 25px;
+  }
+
+  .last-guess {
+    font-size: 25px;
+  }
+
+  .too {
+    font-size: 25px;
+  }
+
+  .user-input {
+    font-size: 200px;
+  }
+
+  .clear {
+    width: 20%;
+    left: 55%;
+    top: 50%;
+  }
+
+  .guess {
+    width: 20%;
+    left: 25%;
+    top: 50%;
+  }
+
+  .set {
+    width: 50%;
+    left: 25%;
+  }
+  .reset {
+    width: 50%;
+    left: 25%;
+  }
 }
