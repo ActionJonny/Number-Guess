@@ -8,15 +8,19 @@
   </head>
   <body>
     <header>
-      <div class='numberTitle'>Number<div>
-      <div class='guesserTitle'>Guesser<div>
+      <span>Number</span>
+      <span class='guesserTitle'>Guesser</span>
     </header>
-    <input class='user-guess'>
+    <input class='user-guess' placeholder="Enter your guess"></input>
     <br>
-    <button type="button" name="guess" class='guess'>Guess</button>
+    <button type="button" name="guess" class='guess' disabled>Guess</button>
     <button type="button" name="clear" class='clear'>Clear</button>
-    <div class='div'></div>
-    <button type="button" name="reset" class='reset'>Reset</button>
+    <section>
+      <h1 class="last-guess"></h1>
+      <h2 class="user-input"></h2>
+      <h3 class="too"></h3>
+    </section>
+    <button type="button" name="reset" class='reset' disabled>Reset</button>
     <script src="script.js"></script>
   </body>
 </html>
