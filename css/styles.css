@@ -94,6 +94,8 @@ button:disabled{
   height: 50px;
   width: 110px;
   top: 50px;
+  font-size: 25px;
+  color: #929497;
   border: 2px solid #D0D2D3;
 }
 .min {
@@ -119,7 +121,8 @@ button:disabled{
 .reset {
   bottom: 0;
 }
-@media screen and (min-width: 650px) {
+
+@media screen and (min-width: 500px) {
   .user-guess {
     position: absolute;
     left: 25%;
