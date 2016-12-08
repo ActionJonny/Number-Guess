@@ -8,7 +8,7 @@ var tooMessage = document.querySelector('.too')
 var minNum = 0
 var maxNum = 200
 var randomNum = Math.floor(Math.random() * (maxNum-minNum))
-var lastGuess = document.querySelector('.last-guess').innerText = ('Pick A Number Between ' + minNum + ' and ' + maxNum)
+var lastGuess = document.querySelector('.last-guess').innerText = ('To Play: Pick A Number Between ' + minNum + ' and ' + maxNum)
 console.log(randomNum)
 
 userGuess.addEventListener('keyup', function() {
@@ -17,7 +17,7 @@ userGuess.addEventListener('keyup', function() {
     guess.disabled = false
     clear.disabled = false
     reset.disabled = false
-  } else if (maxNum < userNum) {
+  } else if (maxNum < userNum || userNum === '') {
     guess.disabled = true
     clear.disabled = true
     reset.disabled = true
@@ -34,9 +34,6 @@ guess.addEventListener('click', function() {
     userInput
     winner()
     tooMessage.innerText = 'Boom!'
-    console.log(maxNum)
-    console.log(minNum)
-    console.log(randomNum)
   } else if (userNumber >= minNum && userNumber <= randomNum) {
     lastGuess
     userInput
@@ -58,12 +55,18 @@ function winner() {
   minNum = minusMin
   maxNum = plusMax
   randomNum = Math.floor(Math.random() * (maxNum-minNum))
-  var lastGuess = document.querySelector('.last-guess').innerText = ('Pick A Number Between ' + minNum + ' and ' + maxNum)
+  var lastGuess = document.querySelector('.last-guess').innerText = ('Play Again! Pick A Number Between ' + minNum + ' and ' + maxNum)
+  userGuess.value = ''
+  guess.disabled = true
+  clear.disabled = true
+  reset.disabled = true
+  console.log(randomNum)
 }
 
 clear.addEventListener('click', function() {
   userGuess.value = ''
-  console.log('not working')
+  guess.disabled = true
+  clear.disabled = true
 })
 
 reset.addEventListener('click', function() {
@@ -72,4 +75,7 @@ reset.addEventListener('click', function() {
   document.querySelector('.last-guess').innerText = ''
   userInput.innerText = ''
   tooMessage.innerText = ('To Play Enter A Number Between ' + minNum + ' and ' + maxNum)
+  guess.disabled = true
+  clear.disabled = true
+  reset.disabled = true
 })
