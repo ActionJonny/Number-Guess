@@ -1,45 +1,75 @@
 var guess = document.querySelector('.guess')
 var clear = document.querySelector('.clear')
 var reset = document.querySelector('.reset')
-var minNum = 1
+var userGuess = document.querySelector('.user-guess')
+var lastGuess = document.querySelector('.last-guess')
+var userInput = document.querySelector('.user-input')
+var tooMessage = document.querySelector('.too')
+var minNum = 0
 var maxNum = 200
-var number = Math.ceil(Math.random() * maxNum * minNum)
-var userPlaceHolder= document.querySelector('.user-guess').placeholder='Enter your guess'
-console.log(number)
+var randomNum = Math.floor(Math.random() * (maxNum-minNum))
+var lastGuess = document.querySelector('.last-guess').innerText = ('Pick A Number Between ' + minNum + ' and ' + maxNum)
+console.log(randomNum)
 
-if(userPlaceHolder < minNum) {
-  document.querySelector('.user-guess').disabled = true
-} if (userPlaceHolder > maxNum) {
-  document.querySelector('.user-guess').disabled = true
-}
-
-guess.addEventListener('click', function() {
-  var userGuess = document.querySelector('.user-guess')
-  var display = document.querySelector('.div')
-  var parse = parseInt(userGuess.value)
-  display.innerText = userGuess.value;
-
-  if(parse === number) {
-    display.innerText = ('Your last guess was' + userGuess.value + 'Boom!')
-  } else if (parse < number) {
-    display.innerText = ('Your last guess was' + userGuess.value + 'That was too Low!')
-  } else if (parse > number) {
-    display.innerText = ('Your last guess was' + userGuess.value + 'That too High!')
-  } else {
-    display.innerText = 'Please Enter A Number Between ' + minNum + '-' + maxNum
+userGuess.addEventListener('keyup', function() {
+  var userNum = parseInt(userGuess.value)
+  if (userNum <= maxNum && userNum >= minNum) {
+    guess.disabled = false
+    clear.disabled = false
+    reset.disabled = false
+  } else if (maxNum < userNum) {
+    guess.disabled = true
+    clear.disabled = true
+    reset.disabled = true
   }
 })
 
+guess.addEventListener('click', function() {
+  var userNumber = parseInt(userGuess.value)
+  var lastGuess = document.querySelector('.last-guess').innerText = 'Your last guess was:'
+  var userInput = document.querySelector('.user-input').innerText = userGuess.value
+  var tooMessage = document.querySelector('.too')
+  if(userNumber === randomNum) {
+    lastGuess
+    userInput
+    winner()
+    tooMessage.innerText = 'Boom!'
+    console.log(maxNum)
+    console.log(minNum)
+    console.log(randomNum)
+  } else if (userNumber >= minNum && userNumber <= randomNum) {
+    lastGuess
+    userInput
+    tooMessage.innerText = 'That is too low!'
+  } else if (userNumber <= maxNum && userNumber >= randomNum) {
+    lastGuess
+    userInput
+    tooMessage.innerText = 'That is too high!'
+  } else {
+    document.querySelector('.last-guess').innerText = ''
+    document.querySelector('.user-input').innerText = ''
+    tooMessage.innerText = ('Please Enter A Number Between ' + minNum + ' and ' + maxNum)
+  }
+})
+
+function winner() {
+  var minusMin = (minNum -= 10)
+  var plusMax = (maxNum += 10)
+  minNum = minusMin
+  maxNum = plusMax
+  randomNum = Math.floor(Math.random() * (maxNum-minNum))
+  var lastGuess = document.querySelector('.last-guess').innerText = ('Pick A Number Between ' + minNum + ' and ' + maxNum)
+}
+
 clear.addEventListener('click', function() {
-  var userGuess = document.querySelector('.user-guess')
   userGuess.value = ''
+  console.log('not working')
 })
 
 reset.addEventListener('click', function() {
-  number = Math.floor(Math.random() * maxNum * minNum)
-  console.log(number)
-  var userGuess = document.querySelector('.user-guess');
-  var display = document.querySelector('.div')
+  var randomNum = Math.floor(Math.random() * (maxNum-minNum))
   userGuess.value = ''
-  display.innerText = ''
+  document.querySelector('.last-guess').innerText = ''
+  userInput.innerText = ''
+  tooMessage.innerText = ('To Play Enter A Number Between ' + minNum + ' and ' + maxNum)
 })

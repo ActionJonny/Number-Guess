@@ -16,7 +16,7 @@ header {
 .user-guess {
   margin: 50px 0;
   height: 50px;
-  width: 250px;
+  width: 90%;
 }
 
 button {
@@ -24,7 +24,7 @@ button {
   color: #fff;
   border-style: none;
   padding: 10px;
-  width: 100px;
+  width: 90%;
   margin: 20px 20px;
 }
 
@@ -37,12 +37,11 @@ button:focus {
   margin-top: 200px;
 }
 
-.div {
-  height: 300px;
-  width: 300px;
-  text-align: center;
+section {
+  height: 250px;
+  width: 90%;
 }
 
-.reset {
-  width: 200px;
+.div.content {
+  text-align: center;
 }
