@@ -91,7 +91,9 @@ set.addEventListener('click', function() {
   var parseMin = parseInt(userMin.value)
   var parseMax = parseInt(userMax.value)
   randomNum = Math.floor(Math.random() * (parseMax-parseMin)) + parseMin
-  tooMessage.innerText = ('To Play: Pick A Number Between ' + parseMin + ' and ' + parseMax)
-  // var lastGuess = document.querySelector('.last-guess').innerText = ('To Play: Pick A Number Between ' + parseMin + ' and ' + parseMax)
+  userInput.innerText = ''
+  tooMessage.innerText = ''
+  userGuess.value = ''
+  var lastGuess = document.querySelector('.last-guess').innerText = ('To Play: Pick A Number Between ' + parseMin + ' and ' + parseMax)
     console.log(randomNum)
 })
