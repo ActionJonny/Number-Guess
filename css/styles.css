@@ -36,24 +36,25 @@ header {
   color: #929497;
 }
 
-.user-guess:focus {
-  outline: none;
-}
-
 .user-guess::-webkit-input-placeholder {
   font-size: 25px;
 }
 
-.guess {
+.guess, .clear {
   position: absolute;
-  top: 85px;
   left: 17.5px;
 }
 
+.guess {
+  top: 85px;
+}
+
 .clear {
-  position: absolute;
   top: 140px;
-  left: 17.5px;
+}
+
+.user-guess:focus, button:focus, .max:focus, .min:focus {
+  outline: none;
 }
 
 button {
@@ -73,10 +74,6 @@ button:disabled{
   background-color: #D0D2D3;
 }
 
-button:focus {
-  outline: 0;
-}
-
 .middle-container {
   top: 150px;
   height: 200px;
@@ -87,26 +84,39 @@ button:focus {
   font-size: 120px;
 }
 
-
-
 .bottom-container {
   position: relative;
   height: 250px;
 }
 
-h4 {
+.min, .max {
   position: absolute;
+  height: 50px;
+  width: 110px;
+  top: 50px;
+  border: 2px solid #D0D2D3;
+}
+.min {
+  left: 30px;
+}
+.max {
+  right: 30px;
+}
+
+.min::-webkit-input-placeholder, .max::-webkit-input-placeholder {
+  font-size: 20px;
+}
+
+.set, .reset {
+  position: absolute;
+  left: 17.5px;
 }
 
 .set {
-  position: absolute;
   bottom: 55px;
-  left: 17.5px;
 }
 
 .reset {
-  position: absolute;
-  left: 17.5px;
   bottom: 0;
 }
 @media screen and (min-width: 650px) {
@@ -119,36 +129,52 @@ h4 {
     font-size: 25px;
   }
 
-  .last-guess {
-    font-size: 25px;
-  }
-
-  .too {
+  .last-guess, .too, h4 {
     font-size: 25px;
   }
 
   .user-input {
-    font-size: 200px;
+    font-size: 125px;
   }
 
-  .clear {
+  .clear, .guess {
     width: 20%;
-    left: 55%;
     top: 50%;
+  }
+  .clear {
+    left: 55%;
   }
 
   .guess {
-    width: 20%;
     left: 25%;
+  }
+
+  .min, .max {
+    position: absolute;
+    height: 50px;
+    width: 20%;
+    top: 50px;
+    border: 2px solid #D0D2D3;
+  }
+
+  .min {
+    left: 25%;
+  }
+
+  .max {
+    right: 25%;
+  }
+
+  .set, .reset {
+    width: 50%;
+    left: 25%;
+  }
+
+  .set{
     top: 50%;
   }
 
-  .set {
-    width: 50%;
-    left: 25%;
-  }
   .reset {
-    width: 50%;
-    left: 25%;
+    top: 75%;
   }
 }
