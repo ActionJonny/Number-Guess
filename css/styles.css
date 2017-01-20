@@ -3,6 +3,7 @@ body {
   text-align: center;
   font-family: 'Open Sans', sans-serif;
 }
+
 header {
   position: relative;
   background-color: #404041;
@@ -14,12 +15,12 @@ header {
   font-size: 35px;
 }
 
-.guesserTitle {
+.guesser-title {
   color: #E6E7E8;
   font-weight: 300;
 }
 
-.top-container{
+.top-container {
   position: relative;
   height: 200px;
   align-content: center;
@@ -68,9 +69,9 @@ button {
 
 button:hover {
   background-color: #EB008B;
-
 }
-button:disabled{
+
+button:disabled {
   background-color: #D0D2D3;
 }
 
@@ -98,9 +99,11 @@ button:disabled{
   color: #929497;
   border: 2px solid #D0D2D3;
 }
+
 .min {
   left: 30px;
 }
+
 .max {
   right: 30px;
 }
@@ -144,6 +147,7 @@ button:disabled{
     width: 20%;
     top: 50%;
   }
+  
   .clear {
     left: 55%;
   }
