@@ -29,22 +29,18 @@ function disabled() {
 }
 
 userGuess.addEventListener('keyup', function() {
-  var userNum = parseInt(userGuess.value)
-  var parseMin = parseInt(userMin.value)
-  var parseMax = parseInt(userMax.value)
+  userNum = parseInt(userGuess.value)
   if (userNum <= maxNum && userNum >= minNum) {
     notDisabled()
-  } if (userNum <= parseMax && userNum >= parseMin) {
-    notDisabled()
-  } else if (maxNum < userNum || parseMax < userNum || parseMin > userNum || userGuess.value === '') {
+  } else if (maxNum < userNum || minNum > userNum || userGuess.value === '') {
     disabled()
   }
 })
 
 guess.addEventListener('click', function() {
   var userNumber = parseInt(userGuess.value)
-  var parseMin = parseInt(userMin.value)
-  var parseMax = parseInt(userMax.value)
+  parseMin = parseInt(userMin.value)
+  parseMax = parseInt(userMax.value)
   var lastGuess = document.querySelector('.last-guess').innerText = 'Your last guess was:'
   var userInput = document.querySelector('.user-input').innerText = userGuess.value
   if(userNumber === randomNum) {
@@ -53,25 +49,13 @@ guess.addEventListener('click', function() {
     winner()
     tooMessage.innerText = 'Boom!'
     reset.disabled = false
-  } else if (userNumber >= minNum && userNumber <= randomNum) {
+  } else if (userNumber >= minNum && userNumber <= randomNum || userNumber >= parseMin && userNumber <= randomNum) {
     lastGuess
     userInput
     userGuess.value = ''
     tooMessage.innerText = 'That is too low!'
     disabled()
-  } else if (userNumber >= parseMin && userNumber <= randomNum) {
-    lastGuess
-    userInput
-    userGuess.value = ''
-    tooMessage.innerText = 'That is too low!'
-    disabled()
-  } else if (userNumber <= maxNum && userNumber >= randomNum) {
-    lastGuess
-    userInput
-    userGuess.value = ''
-    tooMessage.innerText = 'That is too high!'
-    disabled()
-  } else if (userNumber <= parseMax && userNumber >= randomNum) {
+  } else if (userNumber <= maxNum && userNumber >= randomNum || userNumber <= parseMax && userNumber >= randomNum) {
     lastGuess
     userInput
     userGuess.value = ''
@@ -87,15 +71,15 @@ guess.addEventListener('click', function() {
 })
 
 function winner() {
-  var minusMin = (minNum -= 10)
-  var plusMax = (maxNum += 10)
-  minNum = minusMin
-  maxNum = plusMax
-  var lastGuess = document.querySelector('.last-guess').innerText = ('Play Again! Pick A Number Between ' + minNum + ' and ' + maxNum)
-  randomNum = Math.floor(Math.random() * (maxNum-minNum + 1) + minNum)
-  userGuess.value = ''
   disabled()
-  console.log("random number ",randomNum)
+  minNum = (minNum -= 10)
+  maxNum = (maxNum += 10)
+  // minNum = minusMin
+  // maxNum = plusMax
+  randomNum = Math.floor(Math.random() * (maxNum-minNum + 1) + minNum)
+  var lastGuess = document.querySelector('.last-guess').innerText = ('Play Again! Pick A Number Between ' + minNum + ' and ' + maxNum)
+  userGuess.value = ''
+  console.log(" winner() random number ",randomNum)
   console.log("min number ",minNum);
   console.log("max number ",maxNum);
 }
