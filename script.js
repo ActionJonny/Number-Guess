@@ -10,7 +10,7 @@ var userMin = document.querySelector('.min')
 var userMax = document.querySelector('.max')
 var minNum = 0
 var maxNum = 100
-var randomNum = Math.floor(Math.random() * (maxNum-minNum))
+var randomNum = Math.floor(Math.random() * (maxNum-minNum + 1) + minNum)
 var lastGuess = document.querySelector('.last-guess').innerText = ('To Play: Pick A Number Between ' + minNum + ' and ' + maxNum)
 console.log("random number ",randomNum)
 console.log("min number ",minNum);
@@ -25,7 +25,7 @@ function notDisabled() {
 function disabled() {
   guess.disabled = true
   clear.disabled = true
-  reset.disabled = true
+  // reset.disabled = true
 }
 
 userGuess.addEventListener('keyup', function() {
@@ -92,7 +92,7 @@ function winner() {
   minNum = minusMin
   maxNum = plusMax
   var lastGuess = document.querySelector('.last-guess').innerText = ('Play Again! Pick A Number Between ' + minNum + ' and ' + maxNum)
-  randomNum = Math.floor(Math.random() * (maxNum-minNum))
+  randomNum = Math.floor(Math.random() * (maxNum-minNum + 1) + minNum)
   userGuess.value = ''
   disabled()
   console.log("random number ",randomNum)
@@ -109,15 +109,13 @@ clear.addEventListener('click', function() {
 reset.addEventListener('click', function() {
   minNum = 0
   maxNum = 100
-  var randomNum = Math.floor(Math.random() * (maxNum-minNum))
+  randomNum = Math.floor(Math.random() * (maxNum-minNum + 1) + minNum)
   userGuess.value = ''
   document.querySelector('.last-guess').innerText = ''
   userInput.innerText = ''
   userMin.value =  ''
   userMax.value = ''
   tooMessage.innerText = ('To Play: Enter A Number Between ' + minNum + ' and ' + maxNum)
-  notDisabled()
-  disabled()
   console.log("random number ", randomNum)
   console.log("min number ", minNum);
   console.log("max number ", maxNum);
@@ -126,7 +124,7 @@ reset.addEventListener('click', function() {
 set.addEventListener('click', function() {
   minNum = parseInt(userMin.value)
   maxNum = parseInt(userMax.value)
-  randomNum = Math.floor(Math.random() * (maxNum-minNum)) + minNum
+  randomNum = Math.floor(Math.random() * (maxNum-minNum + 1) + minNum)
   userInput.innerText = ''
   tooMessage.innerText = ''
   userGuess.value = ''
