@@ -13,8 +13,6 @@ var maxNum = 100
 var randomNum = Math.floor(Math.random() * (maxNum-minNum + 1) + minNum)
 var lastGuess = document.querySelector('.last-guess').innerText = ('To Play: Pick A Number Between ' + minNum + ' and ' + maxNum)
 console.log("random number ",randomNum)
-console.log("min number ",minNum);
-console.log("max number ",maxNum);
 
 function notDisabled() {
   guess.disabled = false
@@ -25,7 +23,6 @@ function notDisabled() {
 function disabled() {
   guess.disabled = true
   clear.disabled = true
-  // reset.disabled = true
 }
 
 userGuess.addEventListener('keyup', function() {
@@ -44,20 +41,14 @@ guess.addEventListener('click', function() {
   var lastGuess = document.querySelector('.last-guess').innerText = 'Your last guess was:'
   var userInput = document.querySelector('.user-input').innerText = userGuess.value
   if(userNumber === randomNum) {
-    lastGuess
-    userInput
     winner()
     tooMessage.innerText = 'Boom!'
     reset.disabled = false
   } else if (userNumber >= minNum && userNumber <= randomNum || userNumber >= parseMin && userNumber <= randomNum) {
-    lastGuess
-    userInput
     userGuess.value = ''
     tooMessage.innerText = 'That is too low!'
     disabled()
   } else if (userNumber <= maxNum && userNumber >= randomNum || userNumber <= parseMax && userNumber >= randomNum) {
-    lastGuess
-    userInput
     userGuess.value = ''
     tooMessage.innerText = 'That is too high!'
     disabled()
@@ -74,14 +65,9 @@ function winner() {
   disabled()
   minNum = (minNum -= 10)
   maxNum = (maxNum += 10)
-  // minNum = minusMin
-  // maxNum = plusMax
   randomNum = Math.floor(Math.random() * (maxNum-minNum + 1) + minNum)
   var lastGuess = document.querySelector('.last-guess').innerText = ('Play Again! Pick A Number Between ' + minNum + ' and ' + maxNum)
   userGuess.value = ''
-  console.log(" winner() random number ",randomNum)
-  console.log("min number ",minNum);
-  console.log("max number ",maxNum);
 }
 
 clear.addEventListener('click', function() {
@@ -94,15 +80,12 @@ reset.addEventListener('click', function() {
   minNum = 0
   maxNum = 100
   randomNum = Math.floor(Math.random() * (maxNum-minNum + 1) + minNum)
-  userGuess.value = ''
   document.querySelector('.last-guess').innerText = ''
+  userGuess.value = ''
   userInput.innerText = ''
   userMin.value =  ''
   userMax.value = ''
   tooMessage.innerText = ('To Play: Enter A Number Between ' + minNum + ' and ' + maxNum)
-  console.log("random number ", randomNum)
-  console.log("min number ", minNum);
-  console.log("max number ", maxNum);
 })
 
 set.addEventListener('click', function() {
@@ -114,7 +97,4 @@ set.addEventListener('click', function() {
   userGuess.value = ''
   disabled()
   var lastGuess = document.querySelector('.last-guess').innerText = ('To Play: Pick A Number Between ' + minNum + ' and ' + maxNum)
-  console.log("random number ", randomNum)
-  console.log("min number ", minNum);
-  console.log("max number ", maxNum);
 })
